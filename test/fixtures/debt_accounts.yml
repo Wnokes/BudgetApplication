@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_name: MyString
+  principle: 1
+  interest_rate: 1
+  minimum_payment: 1
+
+two:
+  account_name: MyString
+  principle: 1
+  interest_rate: 1
+  minimum_payment: 1

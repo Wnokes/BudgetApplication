@@ -1,0 +1,2 @@
+class DebtAccount < ApplicationRecord
+end

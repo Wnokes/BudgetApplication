@@ -1,0 +1,37 @@
+<%= form_with(model: debt_account, local: true) do |form| %>
+  <% if debt_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(debt_account.errors.count, "error") %> prohibited this debt_account from being saved:</h2>
+
+      <ul>
+      <% debt_account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :account_name %>
+    <%= form.text_field :account_name, id: :debt_account_account_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :principle %>
+    <%= form.number_field :principle, id: :debt_account_principle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :interest_rate %>
+    <%= form.number_field :interest_rate, id: :debt_account_interest_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :minimum_payment %>
+    <%= form.number_field :minimum_payment, id: :debt_account_minimum_payment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

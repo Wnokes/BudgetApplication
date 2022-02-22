@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Account name:</strong>
+  <%= @debt_account.account_name %>
+</p>
+
+<p>
+  <strong>Principle:</strong>
+  <%= @debt_account.principle %>
+</p>
+
+<p>
+  <strong>Interest rate:</strong>
+  <%= @debt_account.interest_rate %>
+</p>
+
+<p>
+  <strong>Minimum payment:</strong>
+  <%= @debt_account.minimum_payment %>
+</p>
+
+<%= link_to 'Edit', edit_debt_account_path(@debt_account) %> |
+<%= link_to 'Back', debt_accounts_path %>
