@@ -7,17 +7,17 @@
 
 <p>
   <strong>Principle:</strong>
-  <%= @debt_account.principle %>
+  <%= format_dollar_amount @debt_account.principle %>
 </p>
 
 <p>
   <strong>Interest rate:</strong>
-  <%= @debt_account.interest_rate %>
+  <%= format_percentage @debt_account.interest_rate %>
 </p>
 
 <p>
   <strong>Minimum payment:</strong>
-  <%= @debt_account.minimum_payment %>
+  <%= format_dollar_amount @debt_account.minimum_payment %>
 </p>
 
 <%= link_to 'Edit', edit_debt_account_path(@debt_account) %> |
