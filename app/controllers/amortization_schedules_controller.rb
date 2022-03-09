@@ -6,7 +6,7 @@ class AmortizationSchedulesController < ApplicationController
   def index
     @amortization_schedules = AmortizationSchedule.where(user_id: current_user.id)
   end
-
+# le poo
   # GET /amortization_schedules/1 or /amortization_schedules/1.json
   def show
     authorize @amortization_schedule
