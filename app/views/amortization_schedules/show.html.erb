@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @amortization_schedule.name %>
+  <br>
+
+  Debts Included in this schedule
+  <%@amortization_schedule.debt_accounts.each do |d|%>
+    <%=link_to "#{d.account_name}", debt_accounts_path(d) %>
+  <%end%>
+</p>
+
+<%= link_to 'Edit', edit_amortization_schedule_path(@amortization_schedule) %> |
+<%= link_to 'Back', amortization_schedules_path %>

@@ -8,6 +8,6 @@ module NumberFormatHelper
     end
 
     def format_number_two_decimals_places number
-        "#{number/100}.#{number%100}"
+        "#{number/100}.#{format( '%02d' ,number%100)}"
     end
 end

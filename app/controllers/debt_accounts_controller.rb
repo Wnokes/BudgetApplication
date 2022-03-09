@@ -1,7 +1,5 @@
 class DebtAccountsController < ApplicationController
-  include UserVerification
-  before_action :verify_debt_account_belongs_to_user, only: %i[ show edit update destroy ]
-  before_action :verify_debt_accounts_belong_to_user, only: %i[ index ]
+  before_action :set_debt_account, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
 
   # GET /debt_accounts or /debt_accounts.json
@@ -11,6 +9,7 @@ class DebtAccountsController < ApplicationController
 
   # GET /debt_accounts/1 or /debt_accounts/1.json
   def show
+    authorize @debt_account
   end
 
   # GET /debt_accounts/new
@@ -20,6 +19,7 @@ class DebtAccountsController < ApplicationController
 
   # GET /debt_accounts/1/edit
   def edit
+    authorize @debt_account
   end
 
   # POST /debt_accounts or /debt_accounts.json
@@ -39,6 +39,7 @@ class DebtAccountsController < ApplicationController
 
   # PATCH/PUT /debt_accounts/1 or /debt_accounts/1.json
   def update
+    authorize @debt_account
     respond_to do |format|
       if @debt_account.update(debt_account_params)
         format.html { redirect_to debt_account_url(@debt_account), notice: "Debt account was successfully updated." }
@@ -52,6 +53,7 @@ class DebtAccountsController < ApplicationController
 
   # DELETE /debt_accounts/1 or /debt_accounts/1.json
   def destroy
+    authorize @debt_account
     @debt_account.destroy
 
     respond_to do |format|

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :amortization_schedules
   get 'pages/user_dash'
 
   get 'pages/home'

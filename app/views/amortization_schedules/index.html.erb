@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Amortization Schedules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @amortization_schedules.each do |amortization_schedule| %>
+      <tr>
+        <td><%= amortization_schedule.name %></td>
+        <td><%= link_to 'Show', amortization_schedule %></td>
+        <td><%= link_to 'Edit', edit_amortization_schedule_path(amortization_schedule) %></td>
+        <td><%= link_to 'Destroy', amortization_schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Amortization Schedule', new_amortization_schedule_path %>

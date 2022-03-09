@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220221202138) do
+ActiveRecord::Schema.define(version: 20220309021512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amortization_schedules", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_amortization_schedules_on_user_id"
+  end
+
+  create_table "amortization_schedules_debt_accounts", id: false, force: :cascade do |t|
+    t.bigint "amortization_schedule_id", null: false
+    t.bigint "debt_account_id", null: false
+    t.index ["amortization_schedule_id", "debt_account_id"], name: "idx_amort_sched_debt"
+    t.index ["debt_account_id", "amortization_schedule_id"], name: "idx_debt_amort_sched"
+  end
 
   create_table "debt_accounts", force: :cascade do |t|
     t.string "account_name"
@@ -40,5 +55,6 @@ ActiveRecord::Schema.define(version: 20220221202138) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "amortization_schedules", "users"
   add_foreign_key "debt_accounts", "users"
 end
