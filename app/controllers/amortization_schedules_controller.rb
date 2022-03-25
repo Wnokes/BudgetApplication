@@ -24,7 +24,7 @@ class AmortizationSchedulesController < ApplicationController
 
   # POST /amortization_schedules or /amortization_schedules.json
   def create
-    @debt_accounts = DebtAccounts.where(user_id: current_user.id)
+    @debt_accounts = DebtAccount.where(user_id: current_user.id)
     @amortization_schedule = AmortizationSchedule.new(amortization_schedule_params)
     @amortization_schedule.user_id = current_user.id
     respond_to do |format|

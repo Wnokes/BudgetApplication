@@ -1,4 +1,4 @@
-<%= form_with(model: amortization_schedule, local: true) do |form| %>
+<%= form_with(model: amortization_schedule, local: true) do |f| %>
   <% if amortization_schedule.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(amortization_schedule.errors.count, "error") %> prohibited this amortization_schedule from being saved:</h2>
@@ -12,25 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :amortization_schedule_name %>
+    <%= f.label :name %>
+    <%= f.text_field :name, id: :amortization_schedule_name %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :debt_account_id %>
-    <%= form.collection_select(:debt_account_id, 
-                            DebtAccount.all,
-                            :id, 
-                            :account_name,
-                            {
-                              :multiple => true
-                            },
-                            class: 'form-control')
-    
-    %>
+
+
+  <%= f.collection_select(:debt_account,
+                        DebtAccount.where(user_id: current_user.id),
+                        :id, 
+                        :account_name)%>
+
+  <div>
+    <%= link_to_add_association  'add debt', f, :debt_accounts %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>

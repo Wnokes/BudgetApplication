@@ -1,0 +1,8 @@
+<%= f.label "Debt Account" %>
+<%= f.collection_select(:id,
+                        DebtAccount.where(user_id: current_user.id),
+                        :id, 
+                        :account_name)%>
+<%= link_to_remove_association 'Remove Account From Schedule', f %>
+
+butts
